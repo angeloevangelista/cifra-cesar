@@ -1,25 +1,25 @@
 import os
+import platform
 import my_crypto
 
-clear = lambda: os.system('cls')
+clear = lambda: os.system('cls' if os.name == 'nt' else 'clear')
 
 encrypted = False
 message = ''
 key = 0
 
-entry = input('Sua mensagem está criptografada? (S N): ')
-clear()
+entry = raw_input('Sua mensagem esta criptografada? (S N): ')
 
 if entry == 'S' or entry == 's':
   encrypted = True
 
 request = 'Digite a message criptograda: ' if encrypted else 'Digite sua message: '
 
-message = input(request)
-clear()
+message = raw_input(request)
+# clear()
 
-key = input('Digite a chave: ')
-clear()
+key = raw_input('Digite a chave: ')
+# clear()
 
 if encrypted:
   print(my_crypto.decrypt(message, key))
